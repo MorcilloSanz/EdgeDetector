@@ -9,16 +9,15 @@ int main() {
     ImageTools::Image image = ImageTools::loadPNG("test.png");
 
     // Edges
-    double tau1 = 0.06; // 0 <= tau <= 1
-    EdgeDetector edgeDetector(image, tau1);
+    double tau = 0.045; // 0 <= tau <= 1
+    EdgeDetector edgeDetector(image, tau);
     edgeDetector.applyFilter();
 
     // Save output
     ImageTools::savePNG(edgeDetector.getOutputImage(), "output.png");
 
     // EDGE-DETECTOR-COLOR: edge-> r, g, b, else -> original color
-    double tau2 = 0.06; // 0 <= tau <= 1
-    EdgeDetectorColor edgeDetectorColor(image, tau2);
+    EdgeDetectorColor edgeDetectorColor(image, tau);
     edgeDetectorColor.applyFilter(255, 0, 0);    // Border color red
 
     // Save output
