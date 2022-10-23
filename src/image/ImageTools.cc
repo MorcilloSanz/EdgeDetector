@@ -15,6 +15,20 @@ ImageTools::Image::Image(int _width, int _height, int _bpp)
     buffer.resize(width * height * 4);
 }
 
+void ImageTools::toGrey(ImageTools::Image& image) {
+    unsigned int index = 0;
+    for(int i = 0; i < image.buffer.size(); i += 4) {
+        unsigned char r = image.buffer[i];
+        unsigned char g = image.buffer[i + 1];
+        unsigned char b = image.buffer[i + 2];
+        // Grey filter
+        unsigned char grey = 0.3 * r + 0.59 * g + 0.11 * b;
+        image.buffer[i] = grey;
+        image.buffer[i + 1] = grey;
+        image.buffer[i + 2] = grey;
+    }
+}
+
 ImageTools::Image ImageTools::loadPNG(const std::string& path) {
     std::vector<unsigned char> buffer;
     // Load image

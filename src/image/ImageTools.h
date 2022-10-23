@@ -17,6 +17,7 @@ public:
         ~Image() = default;
     };
 public:
+    static void toGrey(ImageTools::Image& image);
     static Image loadPNG(const std::string& path);
     static void savePNG(const Image& image, const std::string& path);
 };
