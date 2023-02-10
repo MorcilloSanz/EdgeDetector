@@ -6,6 +6,8 @@ A simple inequation in order to detect edges in images like Canny edge detector,
 
 ## Explanation
 
+>This is a solution that I invented, for sure better ones exist
+
 As we know that the gradient of the image has bigger values in the edges, we can compare that value with a param in order to consider the current pixel as an edge.
 
 **I** is the input image and the color variation is given by the **gradient of I**:
@@ -27,5 +29,3 @@ by simplifying we get:
 ![alt text](https://github.com/MorcilloSanz/EdgeDetector/blob/main/img/filterInequation.png)
 
 The pixels of the image that satisfy the inequation are considered as edges (white). Those that do not are not edges (black).
-
->This is a solution that I invented, for sure better ones exist
