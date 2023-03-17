@@ -10,22 +10,21 @@ A simple inequation in order to detect edges in images like Canny edge detector,
 
 As we know that the gradient of the image has bigger values in the edges, we can compare that value with a param in order to consider the current pixel as an edge.
 
-**I** is the input image and the color variation is given by the **gradient of I**:
+$I$ is the input image and the color variation is given by the gradient of $I$:
 
-![alt text](https://github.com/MorcilloSanz/EdgeDetector/blob/main/img/gradient.png)
+$$\nabla I = \left( \frac{\partial I}{\partial x}, \frac{\partial I}{\partial y} \right)$$
 
 Dividing the amount of color variation between the maximum amount of color variation will return a normalized value
 
-![alt text](https://github.com/MorcilloSanz/EdgeDetector/blob/main/img/filterDefinition.png)
+$$\frac{\left|| \nabla I \right||}{\left|| \nabla _{m} \right||} \geq \tau$$
 
-Where τ is the tolerance param (0 <= τ <= 1). The more smaller τ is, more edges are detected
+Where $\tau$ is the tolerance param $0 \leq \tau \leq 1$. The more smaller \tau is, more edges are detected
 
-**∇m = (∇mx, ∇my)** is a vector where **∇mx** is the maximum color variation with respect to x and **∇my** with respect to y. As the min color is 0 and the max color is 255, the maximum color variation is 255 - 0 = 255
-
-![alt text](https://github.com/MorcilloSanz/EdgeDetector/blob/main/img/nablaMax.png)
+$\nabla_m = (\nabla_{m_{x}}, \nabla_{m_{y}})$ is a vector where $\nabla_{m_{x}}$ is the maximum color variation with respect to $x$ and $\nabla_{m_{y}}$ with respect to $y$. As the min color is $0$ and the max color is $255$, the maximum color variation is $255 - 0 = 255$
+. So $\nabla_m = (255, 255)$
 
 by simplifying we get:
 
-![alt text](https://github.com/MorcilloSanz/EdgeDetector/blob/main/img/filterInequation.png)
+$$\left( \frac{\partial I}{\partial x} \right)^{2} + \left( \frac{\partial I}{\partial y} \right)^{2} \geq \tau^{2} \left( \nabla^{2}_{m_{x}} + \nabla^{2}_{m_{y}} \right)$$
 
 The pixels of the image that satisfy the inequation are considered as edges (white). Those that do not are not edges (black).
